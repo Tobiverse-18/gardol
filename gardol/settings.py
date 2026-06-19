@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,15 +117,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+
 STATIC_URL = '/static/'
-# Directory where `collectstatic` will collect static files for deployment
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Optional: additional locations the staticfiles app will traverse
-# (not required if you only use app-level `static/` folders)
-STATICFILES_DIRS = [
-    BASE_DIR / 'mall1' / 'static',
-]
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Use WhiteNoise to serve compressed static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
