@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Traffic – SmartRoute</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">🚦 SmartRoute</a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="search.html">Route Search</a></li>
+      <li><a href="report.html" class="active">Report Traffic</a></li>
+      <li><a href="saved.html">Saved Routes</a></li>
+      <li><a href="history.html">History</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-container">
+    <div class="report">
+        <h2 class="page-title"><span class="accent-text">Report Traffic</span></h2>
+    <p class="page-sub">Help other drivers by reporting what you see on the road.</p>
+    </div>
+
+    <div class="form-card">
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="reportLocation" placeholder="e.g. Third Mainland Bridge"/>
+      </div>
+      <div class="form-group">
+        <label>Type of Incident</label>
+        <select id="reportType">
+          <option value="">Select</option>
+          <option>Heavy traffic</option>
+          <option>Accident</option>
+          <option>Road construction</option>
+          <option>Road blocked</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Extra Notes (optional)</label>
+        <textarea id="reportNotes" rows="3" placeholder="Any extra details..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitReport()">Submit Report</button>
+      <p class="success-msg hidden" id="successMsg">✅ Report submitted!</p>
+    </div>
+
+    <h3 class="section-label">Recent Reports</h3>
+    <div id="reportsList"><p class="empty-msg">No reports yet.</p></div>
+  </div>
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand-section">
+      <p class="footer-logo">🚦 SmartRoute</p>
+      <p class="footer-tagline">Helping Lagos move smarter,<br/>one route at a time. 🇳🇬</p>
+    </div>
+
+    <div class="footer-links-section">
+      <p class="footer-heading">Quick Links</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Route Search</a></li>
+        <li><a href="report.html">Report Traffic</a></li>
+        <li><a href="saved.html">Saved Routes</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year">2026</span> SmartRoute. All rights reserved.</p>
+  </div>
+</footer>
+  <script src="{% static 'js/auth.js' %}"></script>
+  <script src="{% static 'js/utils.js' %}"></script>
+  <script>
+    // Show existing reports when page loads
+    showReports();
+
+    function submitReport() {
+      const location = document.getElementById("reportLocation").value.trim();
+      const type     = document.getElementById("reportType").value;
+      const notes    = document.getElementById("reportNotes").value.trim();
+
+      if (!location || !type) {
+  showToast("Please fill in the location and type of incident.", "error");
+  return;
+}
+
+if (location.length < 3) {
+  showToast("Please enter a valid location — at least 3 characters.", "error");
+  return;
+}
+      // Save to localStorage
+      const reports = JSON.parse(localStorage.getItem("trafficReports") || "[]");
+      reports.unshift({ location, type, notes, time: new Date().toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) });      localStorage.setItem("trafficReports", JSON.stringify(reports));
+
+      // Clear the form
+      document.getElementById("reportLocation").value = "";
+      document.getElementById("reportType").value = "";
+      document.getElementById("reportNotes").value = "";
+
+      // Show success message then hide after 3 seconds
+      const msg = document.getElementById("successMsg");
+      msg.classList.remove("hidden");
+      setTimeout(function() { msg.classList.add("hidden"); }, 3000);
+
+      showReports();
+    }
+
+    function showReports() {
+  const reports   = JSON.parse(localStorage.getItem("trafficReports") || "[]");
+  const container = document.getElementById("reportsList");
+
+  if (reports.length === 0) {
+    container.innerHTML = "<p class='empty-msg'>No reports yet.</p>";
+    return;
+  }
+
+  container.innerHTML = reports.map(function(r, i) {
+    return "<div class='report-item'>" +
+      "<strong>" + r.type + "</strong> — " + r.location +
+      " <span class='timestamp'>" + r.time + "</span>" +
+      (r.notes ? "<p class='report-note'>" + r.notes + "</p>" : "") +
+      "<button class='delete-btn' onclick='deleteReport(" + i + ")'>Delete</button>" +
+    "</div>";
+  }).join("");
+}
+
+function deleteReport(index) {
+  const reports = JSON.parse(localStorage.getItem("trafficReports") || "[]");
+  reports.splice(index, 1);
+  localStorage.setItem("trafficReports", JSON.stringify(reports));
+  showReports();
+}
+
+      let yr = document.getElementById('year').textContent = new Date().getFullYear();
+//  document.getElementById("hamburger").addEventListener("click", function() {
+//   document.getElementById("navLinks").classList.toggle("open");
+// });;
+  </script>
+  
+</body>
+</html>

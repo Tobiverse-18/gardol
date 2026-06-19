@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartRoute</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">🚦 SmartRoute</a>
+   <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="navLinks" class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="search.html">Route Search</a></li>
+      <li><a href="report.html">Report Traffic</a></li>
+      <li><a href="saved.html">Saved Routes</a></li>
+      <li><a href="history.html">History</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-tag">Lagos, Nigeria 🇳🇬</p>
+    <h1>Beat <span class="accent-text">Traffic.</span><br/>Find <span class="accent-text">Your</span> Route</h1>
+    <p class="hero-sub">Real-time traffic info for every road in Lagos.</p>
+    <a href="search.html" class="hero-btn">Find a Route</a>
+  </section>
+
+  <section class="how-it-works">
+    <h2>How <span class="accent-text">It</span> Works</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Enter Locations</h3>
+        <p>Pick where you're coming from and where you're going.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Check Traffic</h3>
+        <p>See traffic status — low, moderate or heavy.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Pick a Route</h3>
+        <p>Choose the fastest or least congested option.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SMARTROUTE -->
+  <section class="why-section">
+    <div class="why-container">
+      <div class="why-text">
+        <p class="section-tag">Why SmartRoute?</p>
+        <h2>Lagos Traffic is a <span class="accent-text">Real Problem.</span><br/>We Built a <span class="accent-text">Built a</span> Real Solution.</h2>
+        <p>Lagos is one of the most congested cities in Africa. Millions of people lose hours every single day sitting in traffic on routes that could have been avoided. SmartRoute was built to change that.</p>
+        <p>We give you real route options, show you which ones have heavy traffic, suggest faster alternatives and let you save your most used routes — all in one place, completely free.</p>
+        <a href="search.html" class="hero-btn" style="display:inline-block; margin-top: 20px;">Start Searching</a>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <span>🗺</span>
+          <h4>Multiple Routes</h4>
+          <p>See all possible routes between two locations, not just one.</p>
+        </div>
+        <div class="why-card">
+          <span>🕐</span>
+          <h4>Travel Time</h4>
+          <p>Know how long each route will take before you leave your house.</p>
+        </div>
+        <div class="why-card">
+          <span>📑</span>
+          <h4>Save Routes</h4>
+          <p>Save your Home → Office or Home → School route for quick access.</p>
+        </div>
+        <div class="why-card">
+          <span>🚸</span>
+          <h4>Traffic Alerts</h4>
+          <p>Get instant warnings when heavy traffic is detected on your route.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR ROUTES -->
+  <section class="popular-section">
+    <h2>Popular <span class="accent-text">Routes</span> in Lagos</h2>
+    <p class="section-sub">These are the most searched routes on SmartRoute.</p>
+    <div class="popular-grid">
+      <div class="popular-card">
+        <p class="popular-route">Ikeja → Victoria Island</p>
+        <span class="traffic-badge badge-heavy">🔴 Usually Heavy</span>
+      </div>
+      <div class="popular-card">
+        <p class="popular-route">Yaba → Lekki</p>
+        <span class="traffic-badge badge-moderate">🟡 Moderate</span>
+      </div>
+      <div class="popular-card">
+        <p class="popular-route">Oshodi → Lekki</p>
+        <span class="traffic-badge badge-heavy">🔴 Usually Heavy</span>
+      </div>
+      <div class="popular-card">
+        <p class="popular-route">Maryland → Ikoyi</p>
+        <span class="traffic-badge badge-low">🟢 Usually Clear</span>
+      </div>
+      <div class="popular-card">
+        <p class="popular-route">Surulere → Victoria Island</p>
+        <span class="traffic-badge badge-moderate">🟡 Moderate</span>
+      </div>
+      <div class="popular-card">
+        <p class="popular-route">Ikeja → Lekki</p>
+        <span class="traffic-badge badge-heavy">🔴 Usually Heavy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAFFIC TIPS -->
+  <section class="tips-section">
+    <h2>Lagos <span class="accent-text">Traffic</span> Tips</h2>
+    <p class="section-sub">Advice to help you survive the roads every day.</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-icon">⏰</span>
+        <h4>Leave Early</h4>
+        <p>Lagos traffic peaks between 7am–9am and 4pm–7pm. Leaving 30 minutes earlier can save you over an hour.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🛣️</span>
+        <h4>Use Alternative Routes</h4>
+        <p>The Third Mainland Bridge is not always the fastest. Routes through Ikoyi or Carter Bridge are often quicker.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">📻</span>
+        <h4>Listen to Traffic Reports</h4>
+        <p>Radio stations like Smooth FM and Lagos Traffic Radio give live road updates during peak hours.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">⛽</span>
+        <h4>Keep Your Tank Full</h4>
+        <p>Lagos traffic can be unpredictable. Never leave home with a near-empty tank — you might be stuck for hours.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">📱</span>
+        <h4>Report What You See</h4>
+        <p>If you spot an accident or road block, report it on SmartRoute so other drivers can avoid that route.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🔖</span>
+        <h4>Save Your Regular Routes</h4>
+        <p>Save your daily routes so you can check traffic status quickly every morning before leaving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready <span class="accent-text">to</span> Beat <span class="accent-text">Lagos</span> Traffic?</h2>
+    <p>Search routes, check traffic and plan your journey in seconds.</p>
+    <a href="search.html" class="hero-btn">Find a Route Now</a>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand-section">
+      <p class="footer-logo">🚦 SmartRoute</p>
+      <p class="footer-tagline">Helping Lagos move smarter,<br/>one route at a time. 🇳🇬</p>
+    </div>
+
+    <div class="footer-links-section">
+      <p class="footer-heading">Quick Links</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Route Search</a></li>
+        <li><a href="report.html">Report Traffic</a></li>
+        <li><a href="saved.html">Saved Routes</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year">2026</span> SmartRoute. All rights reserved.</p>
+  </div>
+</footer>
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/utils.js' %}"></script>
+<script>
+  let yr = document.getElementById('year').textContent = new Date().getFullYear();
+
+//    document.getElementById("hamburger").addEventListener("click", function() {
+//   document.getElementById("navLinks").classList.toggle("open");
+// });
+</script>
+
+
+</body>
+</html>
