@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,3 +117,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# Directory where `collectstatic` will collect static files for deployment
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Optional: additional locations the staticfiles app will traverse
+# (not required if you only use app-level `static/` folders)
+STATICFILES_DIRS = [
+    BASE_DIR / 'mall1' / 'static',
+]
+
+# Use WhiteNoise to serve compressed static files in production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
